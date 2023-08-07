@@ -36,3 +36,7 @@ Now you're ready to go!
 Open the `README.md` file inside each assignment and follow the instructions.
 
 > Note: Remember that all commands inside the Readme files assume you are in the root of the project.
+
+## Badge
+
+[![ci_pipeline](https://github.com/acbessa/FAAST/actions/workflows/main.yml/badge.svg)](https://github.com/acbessa/FAAST/actions/workflows/main.yml)
