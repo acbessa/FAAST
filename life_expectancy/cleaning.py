@@ -1,4 +1,5 @@
 """ The code in this file loads, cleans and saves a dataset """
+from pathlib import Path
 import argparse
 import pandas as pd
 
@@ -6,8 +7,9 @@ import pandas as pd
 # VARIABLES
 #--------------------------------------------------------------------
 
-PATH_RAW_DATASET = '/home/acbessa/assignments/life_expectancy/data/eu_life_expectancy_raw.tsv'
-PATH_CLEAN_DATASET = '/home/acbessa/assignments/life_expectancy/data/pt_life_expectancy.csv'
+CURRENT_DIR = str(Path(__file__).parent)
+PATH_RAW_DATASET = f"{CURRENT_DIR}/data/eu_life_expectancy_raw.tsv"
+PATH_CLEAN_DATASET = f"{CURRENT_DIR}/data/pt_life_expectancy.csv"
 new_col_names = ['unit', 'sex', 'age', 'region']
 
 #--------------------------------------------------------------------
