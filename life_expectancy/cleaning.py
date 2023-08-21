@@ -16,7 +16,7 @@ new_col_names = ['unit', 'sex', 'age', 'region']
 # FUNÇÔES
 #--------------------------------------------------------------------
 
-def load_tsv_dataset(path):
+def load_data(path):
     """ Loads the tsv dataset"""
     dataset = pd.read_csv(path, sep='\t')
 
@@ -71,16 +71,16 @@ def save_dataframe_csv(dataset, path):
     """ Saves the filtered dataset """
     dataset.to_csv(path, index = False)
 
-def clean_data(region = 'PT') -> None:
+def clean_data(dataset, region = 'PT') -> None:
     """ Loads, cleans ans saves the dataset """
 
-    dataset = load_tsv_dataset(PATH_RAW_DATASET)
     dataset = split_first_four_columns(dataset)
     dataset = unpivot_date_columns(dataset)
     dataset = ensure_year_as_int(dataset)
     dataset = ensure_value_as_float(dataset)
     dataset = filter_region(dataset, region)
-    save_dataframe_csv(dataset, PATH_CLEAN_DATASET)
+
+    return dataset
 
 #--------------------------------------------------------------------
 # MAIN
@@ -90,4 +90,7 @@ if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser(description='Clean data and filter by country')
     parser.add_argument('--country', help='Country to use as filter')
     args = parser.parse_args()
-    clean_data(args.country)
+
+    raw_dataset = load_data(PATH_RAW_DATASET)
+    clean_dataset = clean_data(raw_dataset, args.country)
+    save_dataframe_csv(clean_dataset, PATH_CLEAN_DATASET)
