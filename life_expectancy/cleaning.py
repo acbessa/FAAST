@@ -87,7 +87,7 @@ def main(country):
 
     raw_dataset = load_data(PATH_RAW_DATASET)
     clean_dataset = clean_data(raw_dataset, country)
-    save_dataframe_csv(clean_dataset, PATH_CLEAN_DATASET)    
+    save_dataframe_csv(clean_dataset, PATH_CLEAN_DATASET)
 
 #--------------------------------------------------------------------
 # MAIN
@@ -99,4 +99,3 @@ if __name__ == "__main__":  # pragma: no cover
     args = parser.parse_args()
 
     main(args.country)
-
