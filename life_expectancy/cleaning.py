@@ -84,12 +84,14 @@ def clean_data(dataset, region = 'PT') -> None:
 
     return dataset
 
-def main(country):
+def main(country, raw_data_path):
     """ Calls load, clean and save functions """
 
-    raw_dataset = load_data(PATH_RAW_DATASET)
+    raw_dataset = load_data(raw_data_path)
     clean_dataset = clean_data(raw_dataset, country)
     save_dataframe_csv(clean_dataset, PATH_CLEAN_DATASET, country)
+    
+    return clean_dataset
 
 #--------------------------------------------------------------------
 # MAIN
@@ -100,4 +102,4 @@ if __name__ == "__main__":  # pragma: no cover
     parser.add_argument('--country', help='Country to use as filter')
     args = parser.parse_args()
 
-    main(args.country)
+    main(args.country, PATH_RAW_DATASET)
