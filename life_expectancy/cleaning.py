@@ -90,7 +90,7 @@ def main(country, raw_data_path):
     raw_dataset = load_data(raw_data_path)
     clean_dataset = clean_data(raw_dataset, country)
     save_dataframe_csv(clean_dataset, PATH_CLEAN_DATASET, country)
-    
+
     return clean_dataset
 
 #--------------------------------------------------------------------
