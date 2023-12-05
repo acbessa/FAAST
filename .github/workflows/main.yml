@@ -1,4 +1,4 @@
-name: ci_pipeline
+name: Linting and Testing
 on:
   pull_request:
     types: ["opened", "edited", "synchronize"]
