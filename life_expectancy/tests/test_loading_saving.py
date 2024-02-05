@@ -1,7 +1,7 @@
 """Test for load_data function"""
 from unittest.mock import patch
 import pandas as pd
-from life_expectancy.cleaning import load_data, save_dataframe_csv
+from life_expectancy.old_cleaning import load_data, save_dataframe_csv
 from . import FIXTURES_DIR
 
 def test_load_data():

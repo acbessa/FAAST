@@ -2,7 +2,7 @@
 from pathlib import Path
 import pandas as pd
 
-from life_expectancy.cleaning import main
+from life_expectancy.old_cleaning import main
 from . import FIXTURES_DIR
 
 def test_clean_data(pt_life_expectancy_expected):
