@@ -39,7 +39,7 @@ class TSVLoader(DataLoaderStrategy):
 #--------------------------------------------------------------------
 
 class ZIPLoader(DataLoaderStrategy):
-    """class for loading ZIP data"""
+    """class for  ZIP data"""
     
     #def load_data(self, file_path) -> pd.DataFrame:
         #'''
@@ -52,6 +52,12 @@ class ZIPLoader(DataLoaderStrategy):
     #    return pd.read_json(file_path)
     
     def load_data(self, file_path) -> pd.DataFrame:
+        '''
+        Loads the json file that contains the data
+        returns:
+            data(Pandas DataFrame): Loaded dataframe
+        '''
+        
         with ZipFile(file_path, "r") as zip_file:
             with zip_file.open(zip_file.namelist()[0]) as json_file:
                 return pd.DataFrame(json.loads(json_file.read()))
