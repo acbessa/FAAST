@@ -4,8 +4,8 @@
 #--------------------------------------------------------------------
 import argparse
 from pathlib import Path
-import pandas as pd
 import os
+import pandas as pd
 from life_expectancy.utils.cleaning import TSVCleaner, ZIPCleaner
 from life_expectancy.utils.load_save_data import TSVLoader, ZIPLoader, save_data
 from life_expectancy.utils.regions import Region
@@ -24,7 +24,7 @@ PATH_CLEAN_DATASET = f"{CURRENT_DIR}/data/"
 def main(file_path: Path, region: Region = Region.PT) -> pd.DataFrame:
     """main function"""
 
-    root, extension = os.path.splitext(file_path)
+    _, extension = os.path.splitext(file_path)
 
     file_type = extension
 
@@ -43,7 +43,7 @@ def main(file_path: Path, region: Region = Region.PT) -> pd.DataFrame:
 
     return cleaned_data
 
-if __name__ == "__main__":  
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('file_path')
     parser.add_argument('region')
