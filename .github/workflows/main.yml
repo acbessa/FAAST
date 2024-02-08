@@ -29,8 +29,5 @@ jobs:
         pip install .
     - name: Lint with pylint
       run: pylint life_expectancy.utils.cleaning
-      run: pylint life_expectancy.utils.load_save_data
-      run: pylint life_expectancy.utils.regions
-      run: pylint life_expectancy.main
     - name: Test with pytest
       run: pytest life_expectancy --cov
