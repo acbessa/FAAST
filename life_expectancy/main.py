@@ -25,11 +25,11 @@ def main(file_path: Path, region: Region = Region.PT) -> pd.DataFrame:
     """main function"""
 
     root, extension = os.path.splitext(file_path)
-    
+
     file_type = extension
-    
+
     print(file_type)
-    
+
     if file_type == '.tsv':
         data_loader = TSVLoader()
         data_cleaner = TSVCleaner(region)

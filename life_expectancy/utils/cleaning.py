@@ -20,7 +20,7 @@ class DataCleanerStrategy(ABC):
     """Abstract class for cleaning data"""
 
     @abstractmethod
-    def clean_data(self, data: pd.DataFrame, region: Region) -> pd.DataFrame:
+    def clean_data(self, data: pd.DataFrame) -> pd.DataFrame:
         """Abstract method to clean the data"""
 
 #--------------------------------------------------------------------
@@ -33,7 +33,7 @@ class TSVCleaner(DataCleanerStrategy):
     def __init__(self, region: Region):
         
         self.region = region
-        
+
     def split_first_four_columns(self, dataset):
         """ Slipts the frist column of the dataset into four different columns """
         old_col = 'unit,sex,age,geo\\time'
@@ -97,28 +97,28 @@ class ZIPCleaner(DataCleanerStrategy):
     """Class for cleaning ZIP data"""
 
     def __init__(self, region: Region):
-        
+ 
         self.region = region
-        
-    
-    def rename_cols(self, dataset):
-        
-        dataset = dataset.rename(columns={"country": "region", "life_expectancy": "value"})
-        
-        return dataset
-    
-    def drop_columns(self, dataset):
 
+
+    def rename_cols(self, dataset):
+        """ Renames the columns country and life_expectancy"""
+        dataset = dataset.rename(columns={"country": "region", "life_expectancy": "value"})
+
+        return dataset
+
+    def drop_columns(self, dataset):
+        """ Drops the columns flag and flag_detail"""
         dataset = dataset.drop(columns=["flag", "flag_detail"], axis = 1)
-        
+
         return dataset
 
     def filter_region(self, dataset, region):
-        
+        """ Filters the dataframe by region"""
         filtered_df = dataset[dataset["region"] == region]
 
         return filtered_df
-    
+
     def clean_data(self, data):
         """ Cleans and returns the dataset """
 
