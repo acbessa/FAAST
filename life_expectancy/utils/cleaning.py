@@ -74,7 +74,7 @@ class TSVCleaner(DataCleanerStrategy):
     def filter_region(self, dataset, region):
         """ Filters the dataset by region"""
 
-        dataset = dataset[dataset['region'] == region.value]
+        dataset = dataset[dataset['region'] == region]
 
         return dataset
 
@@ -93,8 +93,8 @@ class TSVCleaner(DataCleanerStrategy):
 # CLASS FOR JSON
 #--------------------------------------------------------------------
 
-class JSONCleaner(DataCleanerStrategy):
-    """Class for cleaning JSON data"""
+class ZIPCleaner(DataCleanerStrategy):
+    """Class for cleaning ZIP data"""
 
     def __init__(self, region: Region):
         
@@ -115,7 +115,7 @@ class JSONCleaner(DataCleanerStrategy):
 
     def filter_region(self, dataset, region):
         
-        filtered_df = dataset[dataset["region"] == region.value]
+        filtered_df = dataset[dataset["region"] == region]
 
         return filtered_df
     

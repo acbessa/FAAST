@@ -4,6 +4,8 @@
 #--------------------------------------------------------------------
 from abc import ABC, abstractmethod
 import pandas as pd
+from zipfile import ZipFile
+import json
 
 #--------------------------------------------------------------------
 # ABSTRACT CLASS (LOADING)
@@ -36,24 +38,29 @@ class TSVLoader(DataLoaderStrategy):
 # CLASS FOR JSON (LOADING)
 #--------------------------------------------------------------------
 
-class JSONLoader(DataLoaderStrategy):
-    """class for cleaning JSON data"""
-
-    def load_data(self, file_path) -> pd.DataFrame:
-        '''
-        Loads the json file that contains the data
-        returns:
-            data(Pandas DataFrame): Loaded dataframe
-        '''
+class ZIPLoader(DataLoaderStrategy):
+    """class for loading ZIP data"""
+    
+    #def load_data(self, file_path) -> pd.DataFrame:
+        #'''
+        #Loads the json file that contains the data
+        #returns:
+        #    data(Pandas DataFrame): Loaded dataframe
+        #'''
 
         # load input json dataframe
-        return pd.read_json(file_path, compression="infer")
+    #    return pd.read_json(file_path)
+    
+    def load_data(self, file_path) -> pd.DataFrame:
+        with ZipFile(file_path, "r") as zip_file:
+            with zip_file.open(zip_file.namelist()[0]) as json_file:
+                return pd.DataFrame(json.loads(json_file.read()))
     
 #--------------------------------------------------------------------
 # SAVE DATA
 #--------------------------------------------------------------------
 
-def save_data(dataframe: pd.DataFrame, region) -> None:
+def save_data(dataframe: pd.DataFrame, region, path) -> None:
     '''
     Saves the input dataframe into a csv file
     Args:
