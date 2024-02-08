@@ -31,7 +31,7 @@ class TSVCleaner(DataCleanerStrategy):
     """Class for cleaning TSV data"""
 
     def __init__(self, region: Region):
-        
+
         self.region = region
 
     def split_first_four_columns(self, dataset):
@@ -97,7 +97,7 @@ class ZIPCleaner(DataCleanerStrategy):
     """Class for cleaning ZIP data"""
 
     def __init__(self, region: Region):
- 
+
         self.region = region
 
 
