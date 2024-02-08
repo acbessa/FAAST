@@ -3,9 +3,9 @@
 # IMPORTS
 #--------------------------------------------------------------------
 from abc import ABC, abstractmethod
-import pandas as pd
 from zipfile import ZipFile
 import json
+import pandas as pd
 
 #--------------------------------------------------------------------
 # ABSTRACT CLASS (LOADING)
